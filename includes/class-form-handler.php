@@ -261,7 +261,9 @@ class N2DMCF7_Form_Handler {
         $datafields = array('Keys' => $keys, 'Values' => $values);
 
         if ($has_dm) {
-            $this->dm_client->AddContactToAddressBook( $email, $addressbook, $datafields );
+            if (get_option('radio_subscribe') == 'yes') {
+                $this->dm_client->AddContactToAddressBook( $email, $addressbook, $datafields );
+            }
         }
     }
 }
