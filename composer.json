@@ -1,10 +1,10 @@
 {
-    "name": "logicspot/contact-form-7-dotmailer",
-    "type": "wordpress-plugin",
-    "license": "MIT",
-    "description": "A plugin used to process the submission from CF7 forms to Dotmailer",
-    "version": "1.0.0",
-    "require": {
-      "composer/installers": "~1.0"
-    }
+  "name": "logicspot/contact-form-7-dotmailer",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "description": "A plugin used to process the submission from CF7 forms to Dotmailer",
+  "version": "2.0.0",
+  "require": {
+    "composer/installers": "~1.0"
   }
+}

@@ -5,8 +5,8 @@
  * and open the template in the editor.
  */
 
-class N2CF7_DotMailerConnect {
-
+class N2CF7_DotMailerConnect
+{
     public $request_url = 'http://apiconnector.com/api.asmx?WSDL';
     public $username;
     public $password;
@@ -15,47 +15,36 @@ class N2CF7_DotMailerConnect {
     public $auth;
     public $header;
 
-
-    function __construct($username, $password) {
-
+    function __construct($username, $password)
+    {
         try {
-
-
             $this->username = $username;
             $this->password = $password;
             $this->params = array('username' => $this->username, 'password' => $this->password);
             $this->client = new SoapClient($this->request_url, array("trace" => 1, "exceptions" => 1));
             $this->getClient();
         } catch (Exception $e) {
-
             echo $e->getFile();
         }
-
-        
     }
 
-    function getClient() {
-
+    function getClient()
+    {
         return $this->client;
     }
 
-    function listAddressBooks() {
-
-
-
+    function listAddressBooks()
+    {
         try {
             $result = $this->client->ListAddressBooks($this->params);
             return $result->ListAddressBooksResult->APIAddressBook;
         } Catch (SoapFault $ex) {
 
-            return false;
         }
     }
 
-    function listDataFields() {
-
-        $params = array('username' => $this->username, 'password' => $this->password);
-
+    function listDataFields()
+    {
         try {
             $result = $this->client->ListContactDataLabels($this->params);
             return $result->ListContactDataLabelsResult->ContactDataLabel;
@@ -64,7 +53,8 @@ class N2CF7_DotMailerConnect {
         }
     }
 
-    function AddDataField($name, $type){
+    function AddDataField($name, $type)
+    {
         $params = array(
             'username' => $this->username,
             'password' => $this->password,
@@ -72,27 +62,26 @@ class N2CF7_DotMailerConnect {
             'datatype' => $type
         );
 
-        try{
+        try {
             $result = $this->client->CreateDataField($params);
             return $result;
-        }
-        catch (SoapFault $e) {
+        } catch (SoapFault $e) {
             echo $e->faultstring;
             return false;
-        }
-        catch (Exception $ex) {
+        } catch (Exception $ex) {
             echo $ex->getMessage();
             return false;
         }
     }
 
-    function AddContactToAddressBook($email, $addressBookId, $datafields = "") {
+    function AddContactToAddressBook($email, $addressBookId, $datafields = "")
+    {
         $AudienceType = "B2C";
         $OptInType = "Single";
         $EmailType = "Html";
 
         $contact = array(
-            "Email" => $email, 
+            "Email" => $email,
             "AudienceType" => $AudienceType,
             "OptInType" => $OptInType,
             "EmailType" => $EmailType,
@@ -120,7 +109,8 @@ class N2CF7_DotMailerConnect {
         }
     }
 
-    function GetContactByEmail($email) {
+    function GetContactByEmail($email)
+    {
         $params = array('username' => $this->username, 'password' => $this->password, 'email' => $email);
 
         try {
@@ -131,7 +121,8 @@ class N2CF7_DotMailerConnect {
         }
     }
 
-    function getStatusByEmail($email) {
+    function getStatusByEmail($email)
+    {
         $params = array('username' => $this->username, 'password' => $this->password, 'email' => $email);
         try {
             $result = $this->client->GetContactStatusByEmail($params);
@@ -141,8 +132,8 @@ class N2CF7_DotMailerConnect {
         }
     }
 
-    function reSubscribeContact($email, $addressBookId, $datafields = "") {
-
+    function reSubscribeContact($email, $addressBookId, $datafields = "")
+    {
         $AudienceType = "B2C";
         $OptInType = "Single";
         $EmailType = "Html";
@@ -171,7 +162,8 @@ class N2CF7_DotMailerConnect {
         }
     }
 
-    function getAccountDetails() {
+    function getAccountDetails()
+    {
         try {
             $result = $this->client->GetCurrentAccountInfo($this->params);
             return $result->GetCurrentAccountInfoResult->Properties->APIAccountProperty;
@@ -180,12 +172,12 @@ class N2CF7_DotMailerConnect {
             return false;
         }
     }
-    
-    
-    function ApiCampaignSend( $userName, $password, $campaignID, $contactID ) {
+
+    function ApiCampaignSend($userName, $password, $campaignID, $contactID)
+    {
         try {
-			$newTime = date("c", strtotime( date( "Y-m-d H:i:s" ) . " -60 minutes"));
-			$params = array('username' => $userName, 'password' => $password, 'campaignId' => $campaignID, 'contactid' => $contactID, 'sendDate' => $newTime );
+            $newTime = date("c", strtotime(date("Y-m-d H:i:s") . " -60 minutes"));
+            $params = array('username' => $userName, 'password' => $password, 'campaignId' => $campaignID, 'contactid' => $contactID, 'sendDate' => $newTime);
             $result = $this->client->SendCampaignToContact($params);
             return $result;
         } catch (SoapFault $e) {
@@ -194,11 +186,7 @@ class N2CF7_DotMailerConnect {
         } catch (Exception $ex) {
             echo $ex->getMessage();
             return false;
-        }    
+        }
     }
-
-
-
 }
-
 ?>
