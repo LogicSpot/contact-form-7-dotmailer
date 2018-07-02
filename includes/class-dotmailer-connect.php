@@ -72,7 +72,7 @@ class N2CF7_DotMailerConnect
     function AddContactToAddressBook($email, $addressBookId, $datafields = "")
     {
         $AudienceType = "B2C";
-        $OptInType = "Single";
+        $OptInType = "Double";
         $EmailType = "Html";
 
         $contact = array(
