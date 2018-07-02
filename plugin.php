@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 /*
   Plugin Name: N2 Dotmailer Contact Form 7 Plugin
   Description: Integrate Contact Form 7 forms with dotmailer. Push certain fields into dotmailer that have a set name prefix of "dm_".
-  Version: 2.0.0
+  Version: 2.0.1
   Author: N2 Digital Media & LogicSpot
  */
 

@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 class N2CF7_DotMailerConnect
 {
     public $request_url = 'http://apiconnector.com/api.asmx?WSDL';
@@ -135,7 +130,7 @@ class N2CF7_DotMailerConnect
     function reSubscribeContact($email, $addressBookId, $datafields = "")
     {
         $AudienceType = "B2C";
-        $OptInType = "Single";
+        $OptInType = "Double";
         $EmailType = "Html";
 
         $contact = array('Email' => $email, "AudienceType" => $AudienceType, "OptInType" => $OptInType,
