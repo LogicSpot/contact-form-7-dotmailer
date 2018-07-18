@@ -204,7 +204,7 @@ class N2DMCF7_Form_Handler
                     $email = $v;
                     continue;
                 } elseif (strpos($k, 'subscribe') !== false) {
-                    $subscribe = (true == $v)? true : false;
+                    $subscribe = (in_array($v, array("True", "true", "Yes", "yes")))? true : false;
                     continue;
                 } else {
                     $fields_array[][$k] = $v;

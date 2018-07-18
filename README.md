@@ -24,6 +24,6 @@ There MUST be a field of `dm_emailaddress` with the users email.
 
 Add a hidden field into the form with the name of `dm_addressbook` with a value of the ID of the addressbook.
 
-Add a checkbox element called `dm_subscribe` with a pipe value that will return true when checked.
+Add a checkbox or radio element called `dm_subscribe` with a pipe value that will return true or yes when selected.
 
 Once this is all set and the form is submitted it should now push the data over to your Dotmailer address book.
