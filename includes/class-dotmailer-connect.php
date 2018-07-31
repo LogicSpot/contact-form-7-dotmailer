@@ -61,10 +61,8 @@ class N2CF7_DotMailerConnect
             $result = $this->client->CreateDataField($params);
             return $result;
         } catch (SoapFault $e) {
-            echo $e->faultstring;
             return false;
         } catch (Exception $ex) {
-            echo $ex->getMessage();
             return false;
         }
     }
@@ -95,11 +93,8 @@ class N2CF7_DotMailerConnect
             $result = $this->client->AddContactToAddressBook($params);
             return $result;
         } catch (SoapFault $e) {
-            echo $e->faultstring;
             return false;
         } catch (Exception $ex) {
-            echo $ex->getMessage();
-
             return false;
         }
     }
@@ -148,11 +143,8 @@ class N2CF7_DotMailerConnect
             $result = $this->client->ResubscribeContact($params);
             return $result;
         } catch (SoapFault $e) {
-            echo $e->faultstring;
             return false;
         } catch (Exception $ex) {
-            echo $ex->getMessage();
-
             return false;
         }
     }
@@ -176,10 +168,8 @@ class N2CF7_DotMailerConnect
             $result = $this->client->SendCampaignToContact($params);
             return $result;
         } catch (SoapFault $e) {
-            echo $e->faultstring;
             return false;
         } catch (Exception $ex) {
-            echo $ex->getMessage();
             return false;
         }
     }
