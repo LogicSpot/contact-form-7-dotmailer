@@ -93,6 +93,13 @@ class N2CF7_DotMailerConnect
             $result = $this->client->AddContactToAddressBook($params);
             return $result;
         } catch (SoapFault $e) {
+            if ($e->faultcode == "soap:Server") {
+                wp_mail(
+                    get_option('admin_email'),
+                    $e->faultcode,
+                    $e->xdebug_message . 'Error email for '. $email . '. The customer is trying to resubscribe.' 
+                );
+            }
             return false;
         } catch (Exception $ex) {
             return false;
